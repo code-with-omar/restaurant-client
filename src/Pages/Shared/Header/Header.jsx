@@ -1,4 +1,4 @@
-import logo from './../../assets/logo.png'
+import logo from './../../../assets/logo.png'
 const Header = () => {
     const navMenu = <>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>Home</a></li>

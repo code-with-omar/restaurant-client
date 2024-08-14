@@ -1,6 +1,7 @@
 import Message from "../../Message/Message";
 import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
+import PopularMenu from "../PopularMenu/PopularMenu";
 
 const Home = () => {
     return (
@@ -8,6 +9,7 @@ const Home = () => {
            <Banner></Banner>
            <Category></Category>
            <Message></Message>
+           <PopularMenu></PopularMenu>
         </div>
     );
 };

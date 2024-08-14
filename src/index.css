@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.my-btn {
+    @apply bg-[#E8E8E8] text-[#BB8506] px-5 py-3 mb-4 lg:px-7 lg:py-5 lg:mb-5 md:px-6 md:py-4 md:mb-4 rounded-lg border-b-4 border-b-yellow-700 uppercase hover:border-none hover:bg-[#1F2937] hover:text-[#39df68] transition-colors;
+}

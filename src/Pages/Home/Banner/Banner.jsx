@@ -7,28 +7,32 @@ import img4 from './../../../assets/home/04.png'
 import img5 from './../../../assets/home/05.png'
 import img6 from './../../../assets/home/06.png'
 
+
 const Banner = () => {
     return (
-        <Carousel autoPlay interval={3000} infiniteLoop >
-            <div>
-                <img src={img1} />
-            </div>
-            <div>
-                <img src={img2} />
-            </div>
-            <div>
-                <img src={img3} />
-            </div>
-            <div>
-                <img src={img4} />
-            </div>
-            <div>
-                <img src={img5} />
-            </div>
-            <div>
-                <img src={img6} />
-            </div>
-        </Carousel>
+        <section>
+           
+            <Carousel autoPlay interval={3000} infiniteLoop >
+                <div>
+                    <img src={img1} />
+                </div>
+                <div>
+                    <img src={img2} />
+                </div>
+                <div>
+                    <img src={img3} />
+                </div>
+                <div>
+                    <img src={img4} />
+                </div>
+                <div>
+                    <img src={img5} />
+                </div>
+                <div>
+                    <img src={img6} />
+                </div>
+            </Carousel>
+        </section>
     );
 };
 

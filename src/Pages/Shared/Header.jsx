@@ -13,7 +13,7 @@ const Header = () => {
         <div className="navbar bg-base-100 py-1 lg:py-4 md:py-2 fixed z-10 bg-opacity-40">
             <div className="navbar-start  lg:w-1/6 md:w-1/6">
 
-                <a className="uppercase ml-6 text-2x cursor-pointer w-16 h-16 lg:w-24 lg:h-24 md:w-20 md:h-20 ">
+                <a className="uppercase ml-6 text-2x cursor-pointer w-24 h-24 lg:w-16 lg:h-16 md:w-24 md:h-24 ">
                     <img src={logo} alt="" />
                 </a>
             </div>

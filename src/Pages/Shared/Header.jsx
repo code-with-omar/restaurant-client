@@ -10,7 +10,7 @@ const Header = () => {
     </>;
 
     return (
-        <div className="navbar bg-base-100 py-2 lg:py-6 md:py-4 fixed z-10 bg-opacity-40">
+        <div className="navbar bg-base-100 py-1 lg:py-4 md:py-2 fixed z-10 bg-opacity-40">
             <div className="navbar-start  lg:w-1/6 md:w-1/6">
 
                 <a className="uppercase ml-6 text-2x cursor-pointer w-16 h-16 lg:w-24 lg:h-24 md:w-20 md:h-20 ">

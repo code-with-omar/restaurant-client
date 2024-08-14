@@ -9,7 +9,7 @@ import img6 from './../../../assets/home/06.png'
 
 const Banner = () => {
     return (
-        <Carousel >
+        <Carousel autoPlay interval={3000} infiniteLoop >
             <div>
                 <img src={img1} />
             </div>

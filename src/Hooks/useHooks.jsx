@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 const useHooks = () => {
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true)

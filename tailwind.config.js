@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-image': "url('./src/assets/home/chef-service.jpg')",
+        'custom-image': "url('/src/assets/home/chef-service.jpg')",
       }
     },
   },
@@ -16,4 +16,3 @@ export default {
     require('daisyui'),
   ],
 }
-

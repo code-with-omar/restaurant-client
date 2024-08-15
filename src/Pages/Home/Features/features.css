@@ -1,0 +1,7 @@
+.my-bg {
+    background: linear-gradient(0deg, rgba(21, 21, 21, 0.7) 0%, rgba(21, 21, 21, 0.7) 100%), url('./../../../assets//home/featured.jpg');
+    background-color: lightgray;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

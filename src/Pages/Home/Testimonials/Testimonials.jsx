@@ -32,9 +32,9 @@ const Testimonials = () => {
                                         value={review.rating}
                                         readOnly
                                     />
-                                    <FaQuoteLeft className="w-10 h-10 md:w-14 md:h-14 lg:h-16 lg:w-16 mt-5 md:mt-8 lg:mt-10" />
-                                    <h3 className="text-white text-base text-justify font-normal mt-5 md:mt-8 lg:mt-10">{review.details}</h3>
-                                    <h4>{name}</h4>
+                                    <FaQuoteLeft className="w-10 h-10 md:w-14 md:h-14 lg:h-16 lg:w-16 mt-5 md:mt-8 lg:mt-10 text-slate-400" />
+                                    <h4 className="text-white text-base text-justify font-normal mt-5 md:mt-8 lg:mt-10">{review.details}</h4>
+                                    <h3 className="text-[#CD9003] text-lg lg:text-3xl md:text-2xl font-bold mt-2">{review.name}</h3>
                                 </div>
                             </SwiperSlide>
                         ))

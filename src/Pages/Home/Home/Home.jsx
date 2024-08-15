@@ -6,18 +6,23 @@ import ChefRecommends from "../ChefRecommends/ChefRecommends";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import Features from "../Features/Features";
 import Testimonials from "../Testimonials/Testimonials";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     return (
         <div>
-           <Banner></Banner>
-           <Category></Category>
-           <Message></Message>
-           <PopularMenu></PopularMenu>
-           <CallUs></CallUs>
-           <ChefRecommends></ChefRecommends>
-           <Features></Features>
-           <Testimonials></Testimonials>
+            <Helmet>
+                <title>Bistro Boss</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
+            <Banner></Banner>
+            <Category></Category>
+            <Message></Message>
+            <PopularMenu></PopularMenu>
+            <CallUs></CallUs>
+            <ChefRecommends></ChefRecommends>
+            <Features></Features>
+            <Testimonials></Testimonials>
         </div>
     );
 };

@@ -1,0 +1,4 @@
+.active {
+    color: #BB8506; /* or any other style you want to apply to the active tab */
+    font-weight: bold;
+  }

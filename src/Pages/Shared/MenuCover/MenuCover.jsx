@@ -2,7 +2,7 @@
 
 const MenuCover = ({title,details}) => {
     return (
-        <section className=" bg-custom-image hero mt-20 h-[450px] lg:h-[600px] md:h-[550px] bg-no-repeat bg-cover">
+        <section className=" bg-custom-image hero  h-[450px] lg:h-[600px] md:h-[550px] bg-no-repeat bg-cover">
            <div className="hero-overlay bg-opacity-0"></div>
             <div className="hero-content  text-center bg-slate-900 bg-opacity-50  w-3/4 mx-auto px-12 lg:px-48 py-12 lg:py-24 self-center rounded">
                 <div className=" uppercase">

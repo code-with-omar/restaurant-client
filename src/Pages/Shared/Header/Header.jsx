@@ -6,7 +6,7 @@ const Header = () => {
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>CONTACT US</a></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>DASHBOARD</a></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>Our Shop</a></li>
+        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/shop'>Our Shop</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>SIGN IN</a></li>
     </>;
 

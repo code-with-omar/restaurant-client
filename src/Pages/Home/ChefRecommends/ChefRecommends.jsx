@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle";
 import Menu from "../../Shared/Menu/Menu";
+import { Link } from "react-router-dom";
 
 const ChefRecommends = () => {
     const [menu, setMenu] = useState([])
@@ -22,6 +23,7 @@ const ChefRecommends = () => {
                     ></Menu>)
                 }
             </div>
+           
         </section>
     );
 };

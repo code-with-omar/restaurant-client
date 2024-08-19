@@ -1,10 +1,18 @@
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import login from './../../assets/others/login-1.png';
-const SignUp = () => {
-    const handleSignUp = () => {
+import { useForm } from "react-hook-form";
 
-    }
+const SignUp = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
         <section className="bg-login-image mx-auto shadow-custom self-center h-full md:h-screen">
             <div className="flex flex-col lg:flex-row h-full md:items-stretch">
@@ -14,22 +22,25 @@ const SignUp = () => {
 
                 <div className="self-center">
                     <h2 className="text-black text-center text-2xl md:text-4xl lg:text-5xl font-bold mt-2 mb-2 md:mb-4">Sign Up Please</h2>
-                    <form onSubmit={handleSignUp}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="grid gap-y-4">
-                            <label htmlFor="text" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Name</label>
-                            <input type="text" name="text" id="text" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Name" required />
+                            <label htmlFor="name" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Name</label>
+                            <input {...register("name", { required: "Name field is required" })} type="text" name="name" id="name" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Name" />
+                            {errors.name && <span className="text-red-900">{errors.name.message}</span>}
                         </div>
                         <div className="grid gap-y-4">
                             <label htmlFor="email" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Email</label>
-                            <input type="email" name="email" id="email" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Email" required />
+                            <input {...register("email", { required: "Email field is required" })} type="email" name="email" id="email" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Email" />
+                            {errors.email && <span className="text-red-900">{errors.email.message}</span>}
                         </div>
                         <div className="grid gap-y-4 mt-4">
                             <label htmlFor="password" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Password</label>
-                            <input type="password" name="password" id="password" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Password" required />
+                            <input {...register("password", { required: "Password field is required" })} type="password" name="password" id="password" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Password" required />
+                            {errors.password && <span className="text-red-900">{errors.password.message}</span>}
                         </div>
-                       
+
                         <div className="mt-4">
-                            <input  type="submit" value="Sign In" className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg" />
+                            <input type="submit" value="Sign In" className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg" />
                         </div>
                     </form>
 

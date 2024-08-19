@@ -1,43 +1,10 @@
-import { Link } from 'react-router-dom';
+import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import login from './../../assets/others/login-1.png';
-import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { AuthContext } from '../../Providers/authProvider';
+const SignUp = () => {
+    const handleSignUp = () => {
 
-const Login = () => {
-    const capchaRef = useRef(null);
-    const [disabled, setDisabled] = useState(true);
-    const [validationDisabled, setalidationDisabled] = useState(false);
-    const { signIn } = useContext(AuthContext)
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, []);
-    const handleCapchaValidation = () => {
-        const user_captcha_value = capchaRef.current.value;
-        if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
-            setalidationDisabled(true)
-        } else {
-            setDisabled(true);
-            setalidationDisabled(false)
-        }
-    };
-    const handleSignIn = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-            })
-        form.reset()
-    };
-
-
-
+    }
     return (
         <section className="bg-login-image mx-auto shadow-custom self-center h-full md:h-screen">
             <div className="flex flex-col lg:flex-row h-full md:items-stretch">
@@ -46,8 +13,12 @@ const Login = () => {
                 </div>
 
                 <div className="self-center">
-                    <h2 className="text-black text-center text-2xl md:text-4xl lg:text-5xl font-bold mt-2 mb-2 md:mb-4">Login</h2>
-                    <form onSubmit={handleSignIn}>
+                    <h2 className="text-black text-center text-2xl md:text-4xl lg:text-5xl font-bold mt-2 mb-2 md:mb-4">Sign Up Please</h2>
+                    <form onSubmit={handleSignUp}>
+                        <div className="grid gap-y-4">
+                            <label htmlFor="text" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Name</label>
+                            <input type="text" name="text" id="text" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Name" required />
+                        </div>
                         <div className="grid gap-y-4">
                             <label htmlFor="email" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Email</label>
                             <input type="email" name="email" id="email" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Email" required />
@@ -56,22 +27,16 @@ const Login = () => {
                             <label htmlFor="password" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Password</label>
                             <input type="password" name="password" id="password" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Password" required />
                         </div>
-                        <div className="grid gap-y-4 mt-4">
-                            <LoadCanvasTemplate />
-                            <input disabled={validationDisabled} ref={capchaRef} type="text" id="extra" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Captcha" />
-                            <button disabled={validationDisabled} type="button" onClick={handleCapchaValidation} className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg">
-                                Validate Captcha
-                            </button>
-                        </div>
+                       
                         <div className="mt-4">
-                            <input disabled={disabled} type="submit" value="Sign In" className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg" />
+                            <input  type="submit" value="Sign In" className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg" />
                         </div>
                     </form>
 
                     <div className="text-center text-base md:text-lg lg:text-lg mt-4 font-medium">
-                        <p className="text-[#D1A054]">New here?
-                            <Link to="/signup" className="cursor-pointer hover:underline ml-2">
-                                Create a New Account
+                        <p className="text-[#D1A054]">Have Account?
+                            <Link to="/login" className="cursor-pointer hover:underline ml-2">
+                                Sign In
                             </Link>
                         </p>
                         <div className="mb-5 mt-4">
@@ -95,4 +60,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

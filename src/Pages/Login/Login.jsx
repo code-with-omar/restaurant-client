@@ -4,6 +4,7 @@ import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Providers/authProvider';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const capchaRef = useRef(null);
@@ -40,6 +41,9 @@ const Login = () => {
 
     return (
         <section className="bg-login-image mx-auto shadow-custom self-center h-full md:h-screen">
+             <Helmet>
+                <title>Bistro | Sign In</title>
+            </Helmet>
             <div className="flex flex-col lg:flex-row h-full md:items-stretch">
                 <div className="self-center">
                     <img className="w-[400px] md:w-[550px] lg:w-[600px] xl:w-[648px] h-80 md:h-[350px] lg:[380px] xl:h-[455px]" src={login} alt="login photo" />

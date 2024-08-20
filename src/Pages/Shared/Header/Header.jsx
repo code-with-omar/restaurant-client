@@ -3,8 +3,10 @@ import logo from './../../../assets/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/authProvider';
 import { FaCartArrowDown } from "react-icons/fa";
+import useCart from '../../../Hooks/useCart';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [cart]=useCart()
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -20,7 +22,7 @@ const Header = () => {
 
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/contact'>Contact us</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to=''><FaCartArrowDown></FaCartArrowDown>+0</Link></li>
+        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to=''><FaCartArrowDown></FaCartArrowDown>{cart.length}</Link></li>
         {
             user ? <>
                 {/* <p>{user?.displayName}</p> */}

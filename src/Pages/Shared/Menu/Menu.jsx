@@ -3,13 +3,15 @@ import useAuth from "../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAxios from "../../../Hooks/useAxios";
+import useCart from "../../../Hooks/useCart";
 
 const Menu = ({ item }) => {
     const { _id, name, image, details } = item
     const { user } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    const axiosSecure=useAxios()
+    const axiosSecure = useAxios()
+    const [,refetch] = useCart()
     const handleAddToCart = (food) => {
         if (user && user.email) {
             const cartItem = {
@@ -17,7 +19,7 @@ const Menu = ({ item }) => {
                 email: user.email,
                 name,
                 image,
-                
+
             }
             axiosSecure.post('carts', cartItem)
                 .then(res => {
@@ -31,6 +33,9 @@ const Menu = ({ item }) => {
                             confirmButtonText: "Ok!",
                             timer: 1500
                         });
+                        // refresh menu 
+                        // this refresh come from useCart hook
+                        refetch()
                     }
                 })
         } else {

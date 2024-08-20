@@ -1,5 +1,5 @@
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login from './../../assets/others/login-1.png';
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
@@ -8,15 +8,17 @@ import { AuthContext } from "../../Providers/authProvider";
 
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const { reset, register, handleSubmit, formState: { errors }, } = useForm();
-
+    const navigate = useNavigate()
     const onSubmit = (data) => {
         console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                updateUserProfile(data.name, data.photoURL)
+                navigate('/login')
             })
         reset()
     };
@@ -43,6 +45,11 @@ const SignUp = () => {
                             <label htmlFor="email" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Email</label>
                             <input {...register("email", { required: "Email field is required" })} type="email" name="email" id="email" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Email" />
                             {errors.email && <span className="text-red-900">{errors.email.message}</span>}
+                        </div>
+                        <div className="grid gap-y-4">
+                            <label htmlFor="photoURL" className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Photo URL</label>
+                            <input {...register("photoURL", { required: true })} type="text" name="photoURL" id="photoURL" className="rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] bg-white pl-5 h-8 md:h-10 xl:h-14 lg:h-12" placeholder="Enter Photo URL" />
+                            {errors.photoURL && <span className="text-red-900">Photo required</span>}
                         </div>
                         <div className="grid gap-y-4 mt-4">
                             <label className="text-[#444] text-base mt-2 md:text-lg lg:text-xl font-semibold">Password</label>

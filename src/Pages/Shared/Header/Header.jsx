@@ -6,7 +6,7 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
-            .then(() => {})
+            .then(() => { })
             .catch((error) => {
                 console.log(error)
             });
@@ -18,7 +18,11 @@ const Header = () => {
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>DASHBOARD</a></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
         {
-            user ? <li onClick={handleLogOut} className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link>Log Out</Link></li> : <li  className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='signup'>SIGN Up</Link></li>
+            user ? <>
+                {/* <p>{user?.displayName}</p> */}
+                <li onClick={handleLogOut} className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link>Log Out</Link></li>
+            </> :
+                <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='signup'>SIGN Up</Link></li>
         }
 
 

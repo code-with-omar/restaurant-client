@@ -1,13 +1,27 @@
 import { Link } from 'react-router-dom';
 import logo from './../../../assets/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../../Providers/authProvider';
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {})
+            .catch((error) => {
+                console.log(error)
+            });
+
+    }
     const navMenu = <>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/'>Home</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>CONTACT US</a></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>DASHBOARD</a></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/shop'>Our Shop</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='login'>SIGN IN</Link></li>
+        {
+            user ? <li onClick={handleLogOut} className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link>Log Out</Link></li> : <li  className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='signup'>SIGN Up</Link></li>
+        }
+
+
     </>;
 
     return (

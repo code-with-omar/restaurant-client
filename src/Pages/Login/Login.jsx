@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from './../../assets/others/login-1.png';
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
@@ -11,6 +11,9 @@ const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const [validationDisabled, setalidationDisabled] = useState(false);
     const { signIn } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, []);
@@ -33,6 +36,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
         form.reset()
     };

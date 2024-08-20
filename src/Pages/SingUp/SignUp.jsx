@@ -58,7 +58,7 @@ const SignUp = () => {
                             {errors.password?.type === "pattern" && <span className="text-red-900">Password at least 1 lower case 1 upper case 1 digits 1 special characters  </span>}
                         </div>
                         <div className="mt-4">
-                            <input type="submit" value="Sign In" className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg" />
+                            <input type="submit" value="Sign Up" className="btn btn-primary bg-orange-700 text-white text-base rounded-lg w-full md:w-[400px] lg:w-[450px] xl:w-[600px] h-8 md:h-10 xl:h-14 lg:h-12 cursor-pointer hover:text-orange-700 hover:bg-white transition-colors hover:text-lg" />
                         </div>
                     </form>
 

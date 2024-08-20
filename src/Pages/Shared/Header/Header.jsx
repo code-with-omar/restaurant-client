@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from './../../../assets/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/authProvider';
+import { FaCartArrowDown } from "react-icons/fa";
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const handleLogOut = () => {
@@ -14,11 +15,12 @@ const Header = () => {
     }
     const navMenu = <>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/'>Home</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>CONTACT US</a></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>DASHBOARD</a></li>
 
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/contact'>Contact us</Link></li>
+
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
+        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/contact'>Contact us</Link></li>
+        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to=''><FaCartArrowDown></FaCartArrowDown>+0</Link></li>
         {
             user ? <>
                 {/* <p>{user?.displayName}</p> */}

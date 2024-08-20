@@ -17,7 +17,7 @@ const Menu = ({ item }) => {
                 email: user.email,
                 name,
                 image,
-                details
+                
             }
             axiosSecure.post('carts', cartItem)
                 .then(res => {

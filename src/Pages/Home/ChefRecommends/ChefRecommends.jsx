@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ChefRecommends = () => {
     const [menu, setMenu] = useState([])
     useEffect(() => {
-        fetch('chefMenu.json')
+        fetch(`http://localhost:5000/suggest`)
             .then(res => res.json())
             .then(data => {
                 setMenu(data)

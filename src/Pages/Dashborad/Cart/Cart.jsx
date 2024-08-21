@@ -3,7 +3,7 @@ import useCart from "../../../Hooks/useCart";
 import { MdDeleteForever } from "react-icons/md";
 import useAxios from "../../../Hooks/useAxios";
 const Cart = () => {
-    const [cart] = useCart();
+    const [cart,refetch] = useCart();
     const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
     const axiosSecure = useAxios()
     const handleDelete = (id) => {
@@ -26,6 +26,7 @@ const Cart = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+                            refetch()
                         }
                     })
                     .catch(error=>{

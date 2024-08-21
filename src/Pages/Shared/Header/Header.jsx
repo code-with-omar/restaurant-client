@@ -17,12 +17,12 @@ const Header = () => {
     }
     const navMenu = <>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/'>Home</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><a>DASHBOARD</a></li>
+        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/'>Dashboard</Link></li>
 
 
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/contact'>Contact us</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to=''><FaCartArrowDown></FaCartArrowDown>{cart.length}</Link></li>
+        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/dashboard/cart'><FaCartArrowDown></FaCartArrowDown>{cart.length}</Link></li>
         {
             user ? <>
                 {/* <p>{user?.displayName}</p> */}

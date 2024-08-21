@@ -6,12 +6,12 @@ import useAxios from "../../../Hooks/useAxios";
 import useCart from "../../../Hooks/useCart";
 
 const Menu = ({ item }) => {
-    const { _id, name, image, details } = item
+    const { _id, name, image, details, price } = item
     const { user } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
     const axiosSecure = useAxios()
-    const [,refetch] = useCart()
+    const [, refetch] = useCart()
     const handleAddToCart = (food) => {
         if (user && user.email) {
             const cartItem = {
@@ -19,7 +19,7 @@ const Menu = ({ item }) => {
                 email: user.email,
                 name,
                 image,
-
+                price
             }
             axiosSecure.post('carts', cartItem)
                 .then(res => {

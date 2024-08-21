@@ -15,7 +15,7 @@ const Dashboard = () => {
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
                 {/* Main Content */}
-                <div className="drawer-content flex-1 p-6">
+                <div className="drawer-content flex-1 p-6 lg:px-20">
                     {/* Navbar / Drawer Toggle Button */}
                     <div className="w-full flex justify-between lg:hidden">
                         <label htmlFor="my-drawer" className="  drawer-button lg:hidden cursor-pointer text-green-500">

@@ -40,7 +40,7 @@ const Cart = () => {
         <div>
             <div className="flex justify-between">
                 <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Orders: {cart.length}</h2>
-                <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Price: {totalPrice}</h2>
+                <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Price: ${totalPrice.toFixed(2)}</h2>
                 <button className="btn btn-outline btn-accent uppercase">pay fast</button>
             </div>
             <div className="overflow-x-auto">

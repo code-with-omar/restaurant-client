@@ -3,22 +3,45 @@ import { Link, useNavigate } from "react-router-dom";
 import login from './../../assets/others/login-1.png';
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/authProvider";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const { reset, register, handleSubmit, formState: { errors }, } = useForm();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic()
     const onSubmit = (data) => {
-        console.log(data);
+
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            photoURL: data.photoURL
+                        }
+                        axiosPublic.post('/users',userInfo)
+                            .then(res => {})
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
                 navigate('/login')
+            })
+            .catch(error => {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Email is already use",
+                });
             })
         reset()
     };

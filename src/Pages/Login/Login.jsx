@@ -5,6 +5,8 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Providers/authProvider';
 import { Helmet } from 'react-helmet-async';
+import useAuth from '../../Hooks/useAuth';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Login = () => {
     const capchaRef = useRef(null);
@@ -13,6 +15,8 @@ const Login = () => {
     const { signIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
+    const { googleSignIn } = useAuth()
+    const axiosPublic = useAxiosPublic()
     const from = location.state?.from?.pathname || "/";
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -35,17 +39,35 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 navigate(from, { replace: true });
             })
         form.reset()
     };
 
-
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                console.log(result.user)
+                const userInfo = {
+                    name: result.displayName,
+                    email: result.email,
+                    photoURL: result.photoURL
+                }
+                axiosPublic('/users', userInfo)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(error => console.log(error))
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     return (
         <section className="bg-login-image mx-auto shadow-custom self-center h-full md:h-screen">
-             <Helmet>
+            <Helmet>
                 <title>Bistro | Sign In</title>
             </Helmet>
             <div className="flex flex-col lg:flex-row h-full md:items-stretch">
@@ -89,7 +111,9 @@ const Login = () => {
                                     <FaFacebookF className="text-[#1877F2]" />
                                 </div>
                                 <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center lg:w-[52px] lg:h-[52px] border border-slate-950 cursor-pointer">
-                                    <FaGoogle className="text-[#34A853]" />
+                                    <button onClick={handleGoogleSignIn}>
+                                        <FaGoogle className="text-[#34A853]" />
+                                    </button>
                                 </div>
                                 <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center lg:w-[52px] lg:h-[52px] border border-slate-950 cursor-pointer">
                                     <FaGithub className="text-[#171515]" />

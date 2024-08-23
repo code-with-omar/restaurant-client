@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/authProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAuth from "../../Hooks/useAuth";
 
 
 const SignUp = () => {
@@ -14,6 +15,7 @@ const SignUp = () => {
     const { reset, register, handleSubmit, formState: { errors }, } = useForm();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic()
+    const { googleSignIn } = useAuth()
     const onSubmit = (data) => {
 
         createUser(data.email, data.password)
@@ -27,13 +29,13 @@ const SignUp = () => {
                             email: data.email,
                             photoURL: data.photoURL
                         }
-                        axiosPublic.post('/users',userInfo)
-                            .then(res => {})
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => { navigate('/login') })
                     })
                     .catch(error => {
                         console.log(error)
                     })
-                navigate('/login')
+
             })
             .catch(error => {
 
@@ -45,7 +47,22 @@ const SignUp = () => {
             })
         reset()
     };
-
+    const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(result =>{
+            console.log(result.user);
+            const userInfo = {
+                name: result.user?.displayName,
+                email: result.user?.email,
+                photoURL: result.user?.photoURL
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(res =>{
+                console.log(res.data);
+                navigate('/');
+            })
+        })
+    }
     return (
         <section className="bg-login-image mx-auto shadow-custom self-center h-full md:h-screen">
             <Helmet>
@@ -104,7 +121,7 @@ const SignUp = () => {
                                 <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center lg:w-[52px] lg:h-[52px] border border-slate-950 cursor-pointer">
                                     <FaFacebookF className="text-[#1877F2]" />
                                 </div>
-                                <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center lg:w-[52px] lg:h-[52px] border border-slate-950 cursor-pointer">
+                                <div onClick={handleGoogleSignIn} className="w-7 h-7 rounded-full bg-white flex justify-center items-center lg:w-[52px] lg:h-[52px] border border-slate-950 cursor-pointer">
                                     <FaGoogle className="text-[#34A853]" />
                                 </div>
                                 <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center lg:w-[52px] lg:h-[52px] border border-slate-950 cursor-pointer">

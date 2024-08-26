@@ -12,6 +12,7 @@ import Secret from "../Pages/Shared/Secret/Secret";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashborad/Cart/Cart";
+import AllUsers from "../Pages/Dashborad/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart></Cart>
+      },
+      {
+        path: 'allusers',
+        element: <AllUsers></AllUsers>
       }
     ]
   },

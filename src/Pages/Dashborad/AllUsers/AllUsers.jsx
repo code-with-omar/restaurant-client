@@ -2,19 +2,55 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
 import { MdDeleteForever } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const AllUsers = () => {
     const axiosSecure = useAxios()
-    const { data: users = [] } = useQuery({
+    
+    const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('users')
             return res.data
         }
     })
-    const action = () => {
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Fetch user details before deleting
+                axiosSecure.get(`/users/${id}`)
+                    .then(response => {
+                        const user = response.data;
+                        // Proceed to delete the user after fetching details
+                        axiosSecure.delete(`/users/${id}`)
+                            .then(res => {
+                                if (res.status === 200) {
+                                    Swal.fire("Deleted!", `The user ${user.name} has been deleted.`, "success");
+                                    refetch();  // Refetch the user data to update the UI
+                                }
+                            })
+                            .catch(error => {
+                                console.log(error);
+                                Swal.fire("Error!", "Something went wrong.", "error");
+                            });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        Swal.fire("Error!", "Failed to fetch user details.", "error");
+                    });
+            }
+        });
+    };
 
-    }
     const rule = () => {
 
     }
@@ -30,6 +66,7 @@ const AllUsers = () => {
                         <tr className="border-b-0 rounded">
                             <th>#</th>
                             <th>Name</th>
+                            <th>Email</th>
                             <th>Rule</th>
                             <th>Action</th>
                         </tr>
@@ -41,11 +78,12 @@ const AllUsers = () => {
                                 <tr key={user._id} className="border-b-[.5px] border-[#E8E8E8]">
                                     <td>{index + 1}</td>
                                     <td>{user.name}</td>
+                                    <td>{user.email}</td>
                                     <td>
                                         <button onClick={() => rule(user._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#D1A054] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><FaUsers className="text-3xl "></FaUsers></button>
                                     </td>
                                     <td>
-                                        <button onClick={() => action(user._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>
+                                        <button onClick={() => handleDelete(user._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>
                                     </td>
                                 </tr>
 

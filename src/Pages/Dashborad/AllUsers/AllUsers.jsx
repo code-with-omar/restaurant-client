@@ -7,7 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 
 const AllUsers = () => {
     const axiosSecure = useAxios()
-    
+
     const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -51,7 +51,33 @@ const AllUsers = () => {
         });
     };
 
-    const rule = () => {
+    const rule = (user) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You make ${user.name} as admin?`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/users/${user._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: `Now ${user.name} is a admin`,
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+
+            }
+
+        });
 
     }
     return (
@@ -80,10 +106,15 @@ const AllUsers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>
-                                        <button onClick={() => rule(user._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#D1A054] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><FaUsers className="text-3xl "></FaUsers></button>
+                                        {
+                                            user.role === 'admin' ? "Admin" : <button onClick={() => rule(user)} className="btn btn-ghost btn-xs text-lg text-white bg-[#D1A054] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><FaUsers className="text-3xl "></FaUsers></button>
+                                        }
+
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDelete(user._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>
+                                        {
+                                            <button onClick={() => handleDelete(user._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>
+                                        }
                                     </td>
                                 </tr>
 

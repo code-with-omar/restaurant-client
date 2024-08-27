@@ -62,7 +62,7 @@ const AllUsers = () => {
             confirmButtonText: "Yes"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.patch(`/users/${user._id}`)
+                axiosSecure.patch(`/users/admin/${user._id}`)
                     .then(res => {
                         console.log(res.data)
                         if (res.data.modifiedCount > 0) {

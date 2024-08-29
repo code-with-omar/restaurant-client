@@ -7,8 +7,10 @@ import { GiHamburgerMenu, } from "react-icons/gi";
 import { MdShoppingBag } from "react-icons/md";
 import { HiMail } from "react-icons/hi";
 import { PiHamburgerFill } from "react-icons/pi";
+import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin()
+    console.log(isAdmin)
     return (
         <div className="min-h-screen bg-gray-100">
             {/* Drawer Wrapper */}

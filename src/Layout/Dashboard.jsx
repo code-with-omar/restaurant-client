@@ -45,7 +45,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li className="mb-4">
-                                        <Link to="#" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
+                                        <Link to="/dashboard/addItem" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
                                             <FaUtensils className="text-lg md:text-xl mr-2" /> Add Item
                                         </Link>
                                     </li>

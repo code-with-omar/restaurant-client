@@ -27,26 +27,20 @@ const AllUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // Fetch user details before deleting
-                axiosSecure.get(`/users/${id}`)
-                    .then(response => {
-                        const user = response.data;
-                        // Proceed to delete the user after fetching details
-                        axiosSecure.delete(`/users/${id}`)
-                            .then(res => {
-                                if (res.status === 200) {
-                                    Swal.fire("Deleted!", `The user ${user.name} has been deleted.`, "success");
-                                    refetch();  // Refetch the user data to update the UI
-                                }
-                            })
-                            .catch(error => {
-                                console.log(error);
-                                Swal.fire("Error!", "Something went wrong.", "error");
-                            });
+
+                // Proceed to delete the user after fetching details
+                axiosSecure.delete(`/users/${id}`)
+                    .then(res => {
+                        if (res.status === 200) {
+                            Swal.fire("Deleted!", `The user  has been deleted.`, "success");
+                            refetch();  // Refetch the user data to update the UI
+                        }
                     })
                     .catch(error => {
                         console.log(error);
-                        Swal.fire("Error!", "Failed to fetch user details.", "error");
+                        Swal.fire("Error!", "Something went wrong.", "error");
                     });
+
             }
         });
     };

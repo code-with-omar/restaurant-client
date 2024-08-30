@@ -1,13 +1,41 @@
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxios from "../../../Hooks/useAxios";
+import useHooks from "../../../Hooks/useHooks";
 
 
 const Allmenu = () => {
-    const menus = useLoaderData()
-    console.log(menus)
-    const update = () => {
+    const [menus, loading, refetch] = useHooks()
+    const axiosSecure = useAxios()
+    const updateMenu = () => {
 
+    }
+    const deleteMenu = async (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/menu/${id}`)
+                console.log(res.data)
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                    
+                }
+                refetch()
+            }
+        });
     }
     return (
         <div>
@@ -49,10 +77,10 @@ const Allmenu = () => {
                                 <td>{menu.name}</td>
                                 <td>${menu.price}</td>
                                 <td>
-                                    <button onClick={() => update(menu._id)} className="btn btn-ghost btn-xs text-lg text-white bg-green-700 rounded-md w-12 h-12 hover:bg-green-700 hover:bg-yellow-400 transition-colors "><FaEdit className="text-xl "></FaEdit></button>
+                                    <button onClick={() => updateMenu(menu._id)} className="btn btn-ghost btn-xs text-lg text-white bg-green-700 rounded-md w-12 h-12 hover:bg-green-700 transition-colors "><FaEdit className="text-xl "></FaEdit></button>
                                 </td>
                                 <td>
-                                    <button onClick={() => (menu._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>
+                                    <button onClick={() => deleteMenu(menu._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>
                                 </td>
                             </tr>
                         ))}

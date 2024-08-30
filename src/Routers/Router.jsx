@@ -79,8 +79,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allmenus',
-        element: <Allmenu></Allmenu>,
-        loader: ({ params }) => fetch('http://localhost:5000/menu')
+        element: <AdminRoute> <Allmenu></Allmenu></AdminRoute>
       }
     ]
   },

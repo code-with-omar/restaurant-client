@@ -50,7 +50,7 @@ const Dashboard = () => {
                                     </li>
                                     <li className="mb-4">
                                         <Link to="/dashboard/manageItem" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
-                                            <FaList className="text-lg md:text-xl mr-2" />manage items
+                                            <FaList className="text-lg md:text-xl mr-2" />manage orders
                                         </Link>
                                     </li>
                                     <li className="mb-4">

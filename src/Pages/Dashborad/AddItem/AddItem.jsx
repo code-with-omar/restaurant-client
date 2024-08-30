@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import useAxios from "../../../Hooks/useAxios";
+import Swal from "sweetalert2";
 
 const AddItem = () => {
     const { reset, register, handleSubmit, formState: { errors }, } = useForm();
+    const axiosSecure = useAxios()
     const onSubmit = async (e) => {
 
         const file = e.image[0]
@@ -14,15 +17,29 @@ const AddItem = () => {
         const response = await axios.post(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_cloud_name}/image/upload`,
             data
         );
+        // console.log(response)
         const image = response.data.secure_url
         const itemDetails = {
             name: e.name,
             recipe: e.recipe,
-            image,
+            image: image,
             category: e.category,
-            price: e.price
+            price: parseFloat(e.price)
         }
-        console.log(itemDetails)
+        const responseFormServer = await axiosSecure.post('/menu', itemDetails)
+
+
+        if (responseFormServer.data.insertedId) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+        reset()
     }
     return (
         <div>
@@ -46,12 +63,13 @@ const AddItem = () => {
                             <option value="" disabled>
                                 Select category
                             </option>
+
                             {/* Add your categories here */}
                             <option value="salad">Salad</option>
                             <option value="pizza">Pizza</option>
-                            <option value="soups">Soups</option>
-                            <option value="Desserts">Desserts</option>
-                            <option value="Drinks">Drinks</option>
+                            <option value="soup">Soups</option>
+                            <option value="dessert">Desserts</option>
+                            <option value="drinks">Drinks</option>
                         </select>
                     </div>
 

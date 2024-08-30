@@ -15,6 +15,7 @@ import Cart from "../Pages/Dashborad/Cart/Cart";
 import AllUsers from "../Pages/Dashborad/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashborad/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
+import MangeItem from "../Pages/Dashborad/MangeItem/MangeItem";
 
 export const router = createBrowserRouter([
   {
@@ -70,7 +71,12 @@ export const router = createBrowserRouter([
       {
         path: 'addItem',
         element: <AdminRoute><AddItem></AddItem></AdminRoute>
-      }
+      },
+      {
+        path: 'manageItem',
+        element: <AdminRoute><MangeItem></MangeItem></AdminRoute>
+      },
+
     ]
   },
 

@@ -10,7 +10,6 @@ import { PiHamburgerFill } from "react-icons/pi";
 import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
     const [isAdmin] = useAdmin()
-    console.log(isAdmin)
     return (
         <div className="min-h-screen bg-gray-100">
             {/* Drawer Wrapper */}
@@ -50,7 +49,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li className="mb-4">
-                                        <Link to="#" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
+                                        <Link to="/dashboard/manageItem" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
                                             <FaList className="text-lg md:text-xl mr-2" />manage items
                                         </Link>
                                     </li>

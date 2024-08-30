@@ -92,7 +92,7 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody className="text-[#737373] text-lg">
-                        {/* row 1 */}
+                   
                         {
                             users.map((user, index) => (
                                 <tr key={user._id} className="border-b-[.5px] border-[#E8E8E8]">

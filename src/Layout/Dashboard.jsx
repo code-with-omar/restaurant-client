@@ -1,10 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import { IoMdHome, IoIosWallet } from "react-icons/io";
-import { FaAd, FaCalendarAlt, FaList, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaAd, FaCalendarAlt, FaList, FaMedal, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
 import { VscFeedback } from "react-icons/vsc";
 import { LuCalendarClock } from "react-icons/lu";
 import { GiHamburgerMenu, } from "react-icons/gi";
-import { MdShoppingBag } from "react-icons/md";
+import { MdOutlineRestaurantMenu, MdShoppingBag } from "react-icons/md";
 import { HiMail } from "react-icons/hi";
 import { PiHamburgerFill } from "react-icons/pi";
 import useAdmin from "../Hooks/useAdmin";
@@ -61,6 +61,11 @@ const Dashboard = () => {
                                     <li className="mb-4">
                                         <Link to="/dashboard/allusers" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
                                             <FaUsers className="text-lg md:text-xl mr-2" />all users
+                                        </Link>
+                                    </li>
+                                    <li className="mb-4">
+                                        <Link to="/dashboard/allmenus" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
+                                            <MdOutlineRestaurantMenu className="text-lg md:text-xl mr-2" />all menus
                                         </Link>
                                     </li>
                                 </>

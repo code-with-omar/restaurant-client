@@ -16,6 +16,7 @@ import AllUsers from "../Pages/Dashborad/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashborad/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
 import MangeItem from "../Pages/Dashborad/MangeItem/MangeItem";
+import Allmenu from "../Pages/Dashborad/AllMenu/Allmenu";
 
 export const router = createBrowserRouter([
   {
@@ -76,7 +77,11 @@ export const router = createBrowserRouter([
         path: 'manageItem',
         element: <AdminRoute><MangeItem></MangeItem></AdminRoute>
       },
-
+      {
+        path: 'allmenus',
+        element: <Allmenu></Allmenu>,
+        loader: ({ params }) => fetch('http://localhost:5000/menu')
+      }
     ]
   },
 

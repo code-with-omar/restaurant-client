@@ -17,6 +17,7 @@ import AddItem from "../Pages/Dashborad/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
 import MangeItem from "../Pages/Dashborad/MangeItem/MangeItem";
 import Allmenu from "../Pages/Dashborad/AllMenu/Allmenu";
+import UpdateItem from "../Pages/Dashborad/UpdateItem/UpdateItem";
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/shop',
-        element: <PrivateRouter><OurShop></OurShop></PrivateRouter>
+        element: <OurShop></OurShop>
       },
       {
         path: '/login',
@@ -66,7 +67,7 @@ export const router = createBrowserRouter([
       // admin use route
       {
         path: 'allusers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       }
       ,
       {
@@ -80,6 +81,15 @@ export const router = createBrowserRouter([
       {
         path: 'allmenus',
         element: <AdminRoute> <Allmenu></Allmenu></AdminRoute>
+      },
+      {
+        path:'updateItem',
+        element:<UpdateItem></UpdateItem>,
+        loader:({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
+      },
+      {
+        path: 'updateItem/:id',
+        element: <AdminRoute> <UpdateItem></UpdateItem></AdminRoute>
       }
     ]
   },

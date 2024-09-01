@@ -1,6 +1,6 @@
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
-import { useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxios from "../../../Hooks/useAxios";
 import useHooks from "../../../Hooks/useHooks";
@@ -9,9 +9,6 @@ import useHooks from "../../../Hooks/useHooks";
 const Allmenu = () => {
     const [menus, loading, refetch] = useHooks()
     const axiosSecure = useAxios()
-    const updateMenu = () => {
-
-    }
     const deleteMenu = async (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -31,7 +28,7 @@ const Allmenu = () => {
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
-                    
+
                 }
                 refetch()
             }
@@ -77,7 +74,9 @@ const Allmenu = () => {
                                 <td>{menu.name}</td>
                                 <td>${menu.price}</td>
                                 <td>
-                                    <button onClick={() => updateMenu(menu._id)} className="btn btn-ghost btn-xs text-lg text-white bg-green-700 rounded-md w-12 h-12 hover:bg-green-700 transition-colors "><FaEdit className="text-xl "></FaEdit></button>
+                                    <Link to={`/dashboard/updateItem/${menu._id}`}>
+                                        <button className="btn btn-ghost btn-xs text-lg text-white bg-green-700 rounded-md w-12 h-12 hover:bg-green-700 transition-colors "><FaEdit className="text-xl "></FaEdit></button>
+                                    </Link>
                                 </td>
                                 <td>
                                     <button onClick={() => deleteMenu(menu._id)} className="btn btn-ghost btn-xs text-lg text-white bg-[#B91C1C] rounded-md w-12 h-12 hover:bg-white hover:text-[#B91C1C] transition-colors "><MdDeleteForever className="text-3xl "></MdDeleteForever></button>

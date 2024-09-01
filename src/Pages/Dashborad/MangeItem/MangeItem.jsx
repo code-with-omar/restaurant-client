@@ -1,10 +1,10 @@
 import { MdDeleteForever } from "react-icons/md";
-import useManeItem from "../../../Hooks/useManeItem";
 import { FaEdit } from "react-icons/fa";
+import useManageItem from "../../../Hooks/useManageItem";
 
 
 const MangeItem = () => {
-    const [allCarts, refetch] = useManeItem()
+    const [allCarts, refetch] = useManageItem()
     console.log(allCarts)
     const handleDelete = () => {
 

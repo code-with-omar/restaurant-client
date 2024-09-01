@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "./useAxios";
 
 
-const useManeItem = () => {
+const useManageItem = () => {
     const axiosSecure = useAxios()
     const { refetch, data: allCarts = [] } = useQuery({
         queryKey: ['allCarts'],
@@ -14,4 +14,4 @@ const useManeItem = () => {
     return [allCarts, refetch]
 };
 
-export default useManeItem;
+export default useManageItem;

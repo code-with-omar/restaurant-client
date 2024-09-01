@@ -83,13 +83,9 @@ export const router = createBrowserRouter([
         element: <AdminRoute> <Allmenu></Allmenu></AdminRoute>
       },
       {
-        path:'updateItem',
-        element:<UpdateItem></UpdateItem>,
-        loader:({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
-      },
-      {
         path: 'updateItem/:id',
-        element: <AdminRoute> <UpdateItem></UpdateItem></AdminRoute>
+        element: <AdminRoute> <UpdateItem></UpdateItem></AdminRoute>,
+        loader:({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
       }
     ]
   },

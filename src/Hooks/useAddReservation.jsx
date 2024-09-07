@@ -6,7 +6,7 @@ const useAddReservation = () => {
     const { refetch, data: reservation = [] } = useQuery({
         queryKey: ['reservation'],
         queryFn: async () => {
-            const res = await axiosSecure.post(`/reservation`)
+            const res = await axiosSecure.get(`/reservation`)
             return res.data;
         },
     })

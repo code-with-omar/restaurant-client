@@ -1,22 +1,26 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../../Hooks/useAxios";
 
 const AddReservation = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const { user } = useAuth()
     console.log(user.email)
+    const axiosSecure = useAxios()
     const onSubmit = async (e) => {
-      
-        const reservationTable={
-            name:e.name,
-            email:e.email,
-            time:e.time,
-            date:e.date,
-            guest:e.guest,
-            phoneNumber:e.phoneNumber
-         
+
+        const reservationTable = {
+            name: e.name,
+            email: e.email,
+            time: e.time,
+            date: e.date,
+            guest: e.guest,
+            phoneNumber: e.phoneNumber
+
         }
-        console.log(reservationTable)
+        const reservation = await axiosSecure.post('/reservation', reservationTable)
+        console.log(reservation)
     }
     return (
         <div>

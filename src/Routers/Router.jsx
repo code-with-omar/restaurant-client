@@ -19,6 +19,7 @@ import MangeItem from "../Pages/Dashborad/MangeItem/MangeItem";
 import Allmenu from "../Pages/Dashborad/AllMenu/Allmenu";
 import UpdateItem from "../Pages/Dashborad/UpdateItem/UpdateItem";
 import Payment from "../Pages/Dashborad/Payment/Payment";
+import AddReservation from "../Pages/Dashborad/AddReservation/AddReservation";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
         path: 'payment',
         element: <Payment></Payment>
       },
+      {
+        path:'addReservation',
+        element:<AddReservation></AddReservation>
+      },
       // admin use route
       {
         path: 'allusers',
@@ -89,7 +94,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateItem/:id',
         element: <AdminRoute> <UpdateItem></UpdateItem></AdminRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`)
+        loader: ({ params }) => fetch(`https://bistro-boss-server-code-with-omars-projects.vercel.app/menu/${params.id}`)
       },
 
     ]

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ChefRecommends = () => {
     const [menu, setMenu] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/suggest`)
+        fetch(`https://bistro-boss-server-code-with-omars-projects.vercel.app/suggest`)
             .then(res => res.json())
             .then(data => {
                 setMenu(data)
@@ -23,7 +23,7 @@ const ChefRecommends = () => {
                     ></Menu>)
                 }
             </div>
-           
+
         </section>
     );
 };

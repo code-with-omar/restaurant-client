@@ -6,7 +6,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 import useCart from '../../../Hooks/useCart';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
-    const [cart]=useCart()
+    const [cart] = useCart()
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -15,17 +15,29 @@ const Header = () => {
             });
 
     }
+
     const navMenu = <>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/'>Home</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/'>Dashboard</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/menus'>Our Menu</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/shop'>Shop</Link></li>
         <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/contact'>Contact us</Link></li>
-        <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='/dashboard/cart'><FaCartArrowDown></FaCartArrowDown>{cart.length}</Link></li>
+
         {
             user ? <>
                 {/* <p>{user?.displayName}</p> */}
                 <li onClick={handleLogOut} className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link>Log Out</Link></li>
+                <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500">
+                    <Link to='/dashboard/cart'>
+                        <div className="avatar relative ">
+                            <div className="w-14 rounded-full ">
+                                <img className='z-0' src={user?.photoURL} />
+                                
+                            </div>
+                            <p className='absolute right-2 -top-2 z-10'>{cart.length}</p>
+                        </div>
+                    </Link>
+                </li>
             </> :
                 <li className="text-white font-bold lg:text-lg md:text-base text-sm uppercase hover:text-yellow-500"><Link to='signup'>SIGN Up</Link></li>
         }

@@ -88,7 +88,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li className="mb-4">
-                                        <Link to="#" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
+                                        <Link to="/dashboard/cart" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
                                             <FaShoppingCart className="text-lg md:text-xl mr-2" />My Cart
                                         </Link>
                                     </li>

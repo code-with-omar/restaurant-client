@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
+import Swal from "sweetalert2";
 
 const AddReservation = () => {
-    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const {reset , register, handleSubmit, formState: { errors }, } = useForm();
     const { user } = useAuth()
     console.log(user.email)
     const axiosSecure = useAxios()
@@ -21,6 +22,16 @@ const AddReservation = () => {
         }
         const reservation = await axiosSecure.post('/reservation', reservationTable)
         console.log(reservation)
+        if (reservation.data.acknowledged) {
+            Swal.fire({
+                position: "",
+                icon: "success",
+                title: "Your Reservation is success",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        reset()
     }
     return (
         <div>

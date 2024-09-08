@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { IoMdHome, IoIosWallet } from "react-icons/io";
-import { FaAd, FaCalendarAlt, FaList, FaMedal, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaAd, FaCalendarAlt, FaList, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
 import { VscFeedback } from "react-icons/vsc";
 import { LuCalendarClock } from "react-icons/lu";
 import { GiHamburgerMenu, } from "react-icons/gi";
@@ -98,7 +98,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="#" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
+                                        <Link to="/dashboard/findReservation" className="flex py-2 text-lg md:text-xl items-center hover:text-white hover:transition-colors">
                                             <LuCalendarClock className="text-lg md:text-xl mr-2" />My Booking
                                         </Link>
                                     </li>

@@ -20,6 +20,8 @@ import Allmenu from "../Pages/Dashborad/AllMenu/Allmenu";
 import UpdateItem from "../Pages/Dashborad/UpdateItem/UpdateItem";
 import Payment from "../Pages/Dashborad/Payment/Payment";
 import AddReservation from "../Pages/Dashborad/AddReservation/AddReservation";
+import FindReservation from "../Pages/Dashborad/FindReservation/FindReservation";
+
 
 export const router = createBrowserRouter([
   {
@@ -70,8 +72,12 @@ export const router = createBrowserRouter([
         element: <Payment></Payment>
       },
       {
-        path:'addReservation',
-        element:<AddReservation></AddReservation>
+        path: 'addReservation',
+        element: <AddReservation></AddReservation>
+      },
+      {
+        path: 'findReservation',
+        element: <FindReservation></FindReservation>
       },
       // admin use route
       {

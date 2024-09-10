@@ -3,9 +3,10 @@ import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
 import Swal from "sweetalert2";
+import DashboardTitle from "../../../components/DashboardTitle";
 
 const AddReservation = () => {
-    const {reset , register, handleSubmit, formState: { errors }, } = useForm();
+    const { reset, register, handleSubmit, formState: { errors }, } = useForm();
     const { user } = useAuth()
     console.log(user.email)
     const axiosSecure = useAxios()
@@ -35,6 +36,7 @@ const AddReservation = () => {
     }
     return (
         <div>
+            <DashboardTitle subHeading="Reservation" heading="BOOK A TABLE"></DashboardTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-5 grid-cols-3 mb-5">
                     <label className="form-control w-full max-w-xs">

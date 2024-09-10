@@ -4,6 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
+import DashboardTitle from "../../../components/DashboardTitle";
 
 const AllUsers = () => {
     const axiosSecure = useAxios()
@@ -76,6 +77,7 @@ const AllUsers = () => {
     }
     return (
         <div>
+            <DashboardTitle subHeading="How many??" heading="MANAGE ALL USERS"></DashboardTitle>
             <div className="">
                 <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Users: {users.length}</h2>
             </div>

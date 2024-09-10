@@ -2,6 +2,7 @@ import { MdDeleteForever } from "react-icons/md";
 import useManageItem from "../../../Hooks/useManageItem";
 import Swal from "sweetalert2";
 import useAxios from "../../../Hooks/useAxios";
+import DashboardTitle from "../../../components/DashboardTitle";
 
 const FindReservation = () => {
     const [reservation, refetch] = useManageItem()
@@ -38,6 +39,7 @@ const FindReservation = () => {
     
     return (
         <div>
+            <DashboardTitle subHeading="Excellent Ambience" heading="MY BOOKINGS"></DashboardTitle>
             {
                 reservation.length
                     ? <>

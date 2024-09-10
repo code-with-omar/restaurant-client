@@ -1,6 +1,7 @@
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import useManageItem from "../../../Hooks/useManageItem";
+import DashboardTitle from "../../../components/DashboardTitle";
 
 
 const MangeItem = () => {
@@ -14,6 +15,7 @@ const MangeItem = () => {
     }
     return (
         <div>
+            <DashboardTitle heading=""></DashboardTitle>
             <div className="">
                 <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Item: {allCarts.length}</h2>
             </div>

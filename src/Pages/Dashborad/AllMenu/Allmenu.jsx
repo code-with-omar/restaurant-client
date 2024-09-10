@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxios from "../../../Hooks/useAxios";
 import useHooks from "../../../Hooks/useHooks";
+import DashboardTitle from "../../../components/DashboardTitle";
 
 
 const Allmenu = () => {
@@ -36,6 +37,7 @@ const Allmenu = () => {
     }
     return (
         <div>
+            <DashboardTitle subHeading="Hurry Up" heading="MANAGE ALL ITEMS"></DashboardTitle>
             <div className="">
                 <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Item: {menus.length}</h2>
             </div>

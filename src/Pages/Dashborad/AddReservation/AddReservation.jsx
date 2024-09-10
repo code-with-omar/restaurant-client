@@ -4,6 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
 import Swal from "sweetalert2";
 import DashboardTitle from "../../../components/DashboardTitle";
+import { FiPhoneCall } from "react-icons/fi";
+import { FaLocationDot } from "react-icons/fa6";
+import { MdWatchLater } from "react-icons/md";
 
 const AddReservation = () => {
     const { reset, register, handleSubmit, formState: { errors }, } = useForm();
@@ -105,6 +108,42 @@ const AddReservation = () => {
                     </button>
                 </div>
             </form >
+            <DashboardTitle subHeading="Visit us" heading="Our Location"></DashboardTitle>
+            <aside className="">
+                <div className="grid  md:grid-cols-3 gap-10 mb-5 md:mb-8 lg:mb-10">
+                    <div className="text-center">
+                        <div className="bg-[#D1A054] grid justify-items-center py-2 md:py-3 lg:py-5 text-white font-extrabold text-xl md:text-2xl lg:text-3xl">
+                            <FiPhoneCall />
+                        </div>
+                        <div className="my-3 md:my-4 lg:my-7">
+                            <h3 className="text-[#1eceae] text-lg md:text-xl lg:text-2xl font-semibold my-4">PHONE</h3>
+                            <p className="text-base my-2 text-black">+38 (012) 34 56 789</p>
+                        </div>
+                    </div>
+                    <div className="text-center">
+                        <div className="bg-[#D1A054] grid justify-items-center py-2 md:py-3 lg:py-5 text-white font-extrabold text-xl md:text-2xl lg:text-3xl ">
+                            <FaLocationDot />
+                        </div>
+                        <div className="my-3 md:my-4 lg:my-7">
+                            <h3 className="text-[#1eceae] text-lg md:text-xl lg:text-2xl font-semibold my-4">ADDRESS</h3>
+                            <p className="text-base my-2 text-black">+38 (012) 34 56 789</p>
+                        </div>
+                    </div>
+                    <div className="text-center">
+                        <div className="bg-[#D1A054] grid justify-items-center py-2 md:py-3 lg:py-5 text-white font-extrabold text-xl md:text-2xl lg:text-3xl ">
+                            <MdWatchLater />
+                        </div>
+                        <div className="my-3 md:my-4 lg:my-7">
+                            <h3 className="text-[#1eceae] text-lg md:text-xl lg:text-2xl font-semibold my-4">
+                                WORKING HOURS
+                            </h3>
+                            <p className="text-base my-2 text-black">Mon - Fri: 08:00 - 22:00</p>
+                            <p className="text-base my-2 text-black">Sat - Sun: 10:00 - 23:00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
         </div >
     );
 };

@@ -21,6 +21,7 @@ import UpdateItem from "../Pages/Dashborad/UpdateItem/UpdateItem";
 import Payment from "../Pages/Dashborad/Payment/Payment";
 import AddReservation from "../Pages/Dashborad/AddReservation/AddReservation";
 import FindReservation from "../Pages/Dashborad/FindReservation/FindReservation";
+import AddReview from "../Pages/Dashborad/AddReview/AddReview";
 
 
 export const router = createBrowserRouter([
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: 'findReservation',
         element: <FindReservation></FindReservation>
+      },
+      {
+        path: 'addReview',
+        element: <AddReview></AddReview>
       },
       // admin use route
       {

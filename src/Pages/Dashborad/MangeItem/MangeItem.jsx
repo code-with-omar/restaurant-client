@@ -1,12 +1,12 @@
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import useManageItem from "../../../Hooks/useManageItem";
-import DashboardTitle from "../../../components/DashboardTitle";
 
+import DashboardTitle from "../../../components/DashboardTitle";
+import useOrder from "../../../Hooks/useOrder"
 
 const MangeItem = () => {
-    const [allCarts, refetch] = useManageItem()
-    console.log(allCarts)
+    const [carts, refetch] = useOrder()
+
     const handleDelete = () => {
 
     }
@@ -17,7 +17,7 @@ const MangeItem = () => {
         <div>
             <DashboardTitle heading=""></DashboardTitle>
             <div className="">
-                <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Item: {allCarts.length}</h2>
+                <h2 className="text-[#151515] text-2xl md:text-3xl lg:text-4xl font-bold uppercase">Total Item: {carts.length}</h2>
             </div>
             <div className="overflow-x-auto">
                 <table className="table mt-5 md:mt-10">
@@ -28,17 +28,17 @@ const MangeItem = () => {
                             <th>Image</th>
                             <th>User</th>
                             <th>Name of Item</th>
-                          
+
                             <th>Price</th>
                             <th>Edit</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="text-[#737373] text-lg">
-                        {allCarts.map((cart, index) => (
+                        {carts.map((cart, index) => (
                             <tr key={cart._id} className="border-b-[.5px] border-[#E8E8E8]">
                                 <td>{index + 1}</td>
-                                
+
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
